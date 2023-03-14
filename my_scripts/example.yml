@@ -1,0 +1,20 @@
+---
+- instance_name: martial_postgresql_testing1
+  compartment_id: ocid1.compartment.oc1..aaaaaaaaeiu7adsx35aegxbrcsdix7yihrxrs5uzuyobwoeexbxy7leitqbq
+  availability_domain: LDKe:US-ASHBURN-AD-2
+  vcn_id: ocid1.vcn.oc1.iad.amaaaaaal4gwqoaaomy7rrwy33fy4wat656jbstubk7qu33u5modpf2y3fga
+  subnet_id: ocid1.subnet.oc1.iad.aaaaaaaabbhs7jb4gmfvo3liejacmody572ztuyscxcps4yhrlfdhp4dbp4q
+  image_id: ocid1.image.oc1.iad.aaaaaaaaqdc7jslbtue7abhwvxaq3ihvazfvihhs2rwk2mvciv36v7ux5sda
+  shape: VM.Standard1.2
+  ssh_public_key: ssh-key
+- instance_name: martial_postgresql_testing2
+  compartment_id: ocid1.compartment.oc1..aaaaaaaaeiu7adsx35aegxbrcsdix7yihrxrs5uzuyobwoeexbxy7leitqbq
+  availability_domain: LDKe:US-ASHBURN-AD-2
+  vcn_id: ocid1.vcn.oc1.iad.amaaaaaal4gwqoaaomy7rrwy33fy4wat656jbstubk7qu33u5modpf2y3fga
+  subnet_id: ocid1.subnet.oc1.iad.aaaaaaaabbhs7jb4gmfvo3liejacmody572ztuyscxcps4yhrlfdhp4dbp4q
+  image_id: ocid1.image.oc1.iad.aaaaaaaaqdc7jslbtue7abhwvxaq3ihvazfvihhs2rwk2mvciv36v7ux5sda
+  shape: VM.Standard.E3.Flex
+  ocpus: float (optional, used with Flex shapes)
+  memory: float (optional, used with Flex Shapes)
+  ssh_public_key: ssh key_path
+  user_data_file: script path

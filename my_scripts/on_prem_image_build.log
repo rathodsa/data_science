@@ -1,0 +1,48 @@
+11-10-2021 10:26:30 INFO Script execution started with parameters : 
+KVM, OL6, 6, 00:16:3E:6B:30:A6, slc14rct, 10.240.224.160
+11-10-2021 10:26:31 INFO Connected (version 2.0, client OpenSSH_5.3)
+11-10-2021 10:26:33 INFO Authentication (publickey) failed.
+11-10-2021 10:26:34 INFO Authentication (password) successful!
+11-10-2021 10:26:34 INFO -----------Installation started------------
+Installation command : virt-install -d --mac=00:16:3E:6B:30:A6 -n slc14rct --os-type=Linux --ram=8192 --vcpus=2 '--extra-args=ks=http://slc16izo.us.oracle.com/ks/OVM_KVM-LINUX-OL60u6-X8664.cfg ip=10.240.224.160 netmask=255.255.248.0 gateway=10.241.88.1 dns=10.231.225.65' --virt-type xen --disk path=/OVS/Repositories/F75CF23BD44F468AA089698044CFEDC9/VirtualDisks/slc14rct_root.img,size=50 --location http://pd-yum-slc-01.us.oracle.com/bootable/OracleLinux/OL6/6/base/x86_64/ --graphics vnc,listen=0.0.0.0
+Build Type : KVM
+11-10-2021 13:32:12 INFO Script execution started with parameters : 
+KVM, OL6, 4, 00:21:F6:EB:28:BD, slc14rcs, 10.240.224.159
+11-10-2021 13:32:13 INFO Connected (version 2.0, client OpenSSH_5.3)
+11-10-2021 13:32:16 INFO Authentication (publickey) failed.
+11-10-2021 13:32:17 INFO Authentication (password) successful!
+11-10-2021 13:32:19 INFO -----------Installation started------------
+Installation command : virt-install -d --mac=00:21:F6:EB:28:BD -n slc14rcs --os-type=Linux --ram=8192 --vcpus=2 '--extra-args=ks=http://slc16izo.us.oracle.com/ks/OVM_KVM-LINUX-OL60u4-X8664.cfg ip=10.240.224.159 netmask=255.255.248.0 gateway=10.241.88.1 dns=10.231.225.65' --virt-type xen --disk path=/OVS/Repositories/F75CF23BD44F468AA089698044CFEDC9/VirtualDisks/slc14rcs_root.img,size=50 --location http://pd-yum-slc-01.us.oracle.com/bootable/OracleLinux/OL6/4/base/x86_64/ --graphics vnc,listen=0.0.0.0
+Build Type : KVM
+11-10-2021 13:34:11 INFO Script execution started with parameters : 
+KVM, OL6, 4, 00:21:F6:EB:28:BD, slc14rcs, 10.240.224.159
+11-10-2021 13:34:12 INFO Connected (version 2.0, client OpenSSH_5.3)
+11-10-2021 13:34:15 INFO Authentication (publickey) failed.
+11-10-2021 13:34:16 INFO Authentication (password) successful!
+11-10-2021 13:34:17 INFO -----------Installation started------------
+Installation command : virt-install -d --mac=00:21:F6:EB:28:BD -n slc14rcs --os-type=Linux --ram=8192 --vcpus=2 '--extra-args=ks=http://slc16izo.us.oracle.com/ks/OVM_KVM-LINUX-OL60u4-X8664.cfg ip=10.240.224.159 netmask=255.255.248.0 gateway=10.240.224.1 dns=10.231.225.65' --virt-type kvm --disk path=/kvm/VirtualDisks/slc14rcs_root.img,size=50 --location http://pd-yum-slc-01.us.oracle.com/bootable/OracleLinux/OL6/4/base/x86_64/ --graphics vnc,listen=0.0.0.0
+Build Type : KVM
+11-10-2021 13:35:26 INFO Script execution started with parameters : 
+KVM, OL6, 4, 00:21:F6:EB:28:BD, slc14rcs, 10.240.224.159
+11-10-2021 13:35:27 INFO Connected (version 2.0, client OpenSSH_5.3)
+11-10-2021 13:35:31 INFO Authentication (publickey) failed.
+11-10-2021 13:35:32 INFO Authentication (password) successful!
+11-10-2021 13:35:33 INFO -----------Installation started------------
+Installation command : virt-install -d --mac=00:21:F6:EB:28:BD -n slc14rcs --os-type=Linux --ram=8192 --vcpus=2 '--extra-args=ks=http://slc16izo.us.oracle.com/ks/OVM_KVM-LINUX-OL60u4-X8664.cfg ip=10.240.224.159 netmask=255.255.248.0 gateway=10.240.224.1 dns=10.231.225.65' --virt-type kvm --disk path=/kvm/VirtualDisks/slc14rcs,size=50 --location http://pd-yum-slc-01.us.oracle.com/bootable/OracleLinux/OL6/4/base/x86_64/ --graphics vnc,listen=0.0.0.0
+Build Type : KVM
+11-10-2021 13:47:54 INFO Script execution started with parameters : 
+KVM, OL6, 4, 00:21:F6:EB:28:BD, slc14rcs, 10.240.224.159
+11-10-2021 13:47:55 INFO Connected (version 2.0, client OpenSSH_5.3)
+11-10-2021 13:47:58 INFO Authentication (publickey) failed.
+11-10-2021 13:47:59 INFO Authentication (password) successful!
+11-10-2021 13:48:01 INFO -----------Installation started------------
+Installation command : virt-install -d --mac=00:21:F6:EB:28:BD -n slc14rcs --os-type=Linux --ram=8192 --vcpus=2 '--extra-args=ks=http://slc16izo.us.oracle.com/ks/OVM_KVM-LINUX-OL60u4-X8664.cfg ip=10.240.224.159 netmask=255.255.248.0 gateway=10.240.224.1 dns=10.231.225.65' --virt-type kvm --disk path=/kvm/VirtualDisk/slc14rcs    ,size=50 --location http://pd-yum-slc-01.us.oracle.com/bootable/OracleLinux/OL6/4/base/x86_64/ --graphics vnc,listen=0.0.0.0
+Build Type : KVM
+11-10-2021 13:48:34 INFO Script execution started with parameters : 
+KVM, OL6, 4, 00:21:F6:EB:28:BD, slc14rcs, 10.240.224.159
+11-10-2021 13:48:35 INFO Connected (version 2.0, client OpenSSH_5.3)
+11-10-2021 13:48:39 INFO Authentication (publickey) failed.
+11-10-2021 13:48:40 INFO Authentication (password) successful!
+11-10-2021 13:48:41 INFO -----------Installation started------------
+Installation command : virt-install -d --mac=00:21:F6:EB:28:BD -n slc14rcs --os-type=Linux --ram=8192 --vcpus=2 '--extra-args=ks=http://slc16izo.us.oracle.com/ks/OVM_KVM-LINUX-OL60u4-X8664.cfg ip=10.240.224.159 netmask=255.255.248.0 gateway=10.240.224.1 dns=10.231.225.65' --virt-type kvm --disk path=/kvm/VirtualDisk/slc14rcs,size=50 --location http://pd-yum-slc-01.us.oracle.com/bootable/OracleLinux/OL6/4/base/x86_64/ --graphics vnc,listen=0.0.0.0
+Build Type : KVM

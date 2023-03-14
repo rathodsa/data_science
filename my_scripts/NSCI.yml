@@ -1,0 +1,55 @@
+stages:
+  - dev_work
+  - stage_work
+  - master_work
+
+variables:
+  -
+
+#right now the CI.yml file is in development branch
+# in the developement branch
+
+
+stages:
+  - dev_work
+  - stage_work
+  - master_work
+
+
+#right now the CI.yml file is in development branch
+# in the developement branch
+job1:
+  stage: dev_work
+  script:
+    - git remote set-url origin https://v.nagasai:Kindley1@gitlab.com/v.nagasai/cicdtesting.git
+    - git fetch --all
+    - git checkout origin/Stage
+    - git reset --hard origin/Stage
+    - git merge $CI_BUILD_REF
+    - git push origin HEAD:Stage
+  rules:
+    - if: $CI_COMMIT_TAG != null
+
+
+
+# in stage branch
+job2:
+  stage: test_branch_work
+  only:
+    - stage-branch
+  script:
+    - create tar file and push to yum server
+    - deployment machines and test
+  rules:
+    - if: $CI_COMMIT_BRANCH == "stage"
+
+#in master branch
+job3:
+  stage: master_branch_work
+  only:
+    - master-branch
+  script:
+    - create tar file and push to yum server
+    - deployment machines and test
+  rules:
+    - if: $CI_COMMIT_BRANCH == "master"

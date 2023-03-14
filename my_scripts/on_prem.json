@@ -1,0 +1,87 @@
+{
+"host_to_connect1": "slcav928.us.oracle.com",
+"host_to_connect2": "slcal653.us.oracle.com",
+"username": "root",
+"first_pass": "d2VsY29tZQ==",
+"std_pass": "UyQxdiFAbkVfcA==",
+  "ol6u10":{
+    "build_type": "OVM",
+    "version": "OL6", v9
+    "sub_version": "10",
+    "mac_address": "00:21:F6:C4:9A:C3",
+    "host_name": "slc17xrm",
+    "ip_address": "10.241.90.251"
+  },
+  "ol6u4":{
+    "build_type": "OVM",
+    "version": "OL6",
+    "sub_version": "4",
+    "mac_address": "00:21:F6:F6:00:34",
+    "host_name": "slc17xrj",
+    "ip_address": "10.241.90.248"
+  },
+  "ol6u6":{
+    "build_type": "OVM",
+    "version": "OL6",
+    "sub_version": "6",
+    "mac_address": "00:21:F6:A8:FA:7E",
+    "host_name": "slc17xrk",
+    "ip_address": "10.241.90.249"
+  },
+  "ol6u8":{
+     "build_type": "OVM",
+    "version": "OL6",
+    "sub_version": "8",
+    "mac_address": "00:21:F6:02:CC:7D",
+    "host_name": "slc17xrn",
+    "ip_address": "10.241.90.252"
+  },
+  "ol7u4":{
+    "build_type": "OVM",
+    "version": "OL7",
+    "sub_version": "4",
+    "mac_address": "00:21:F6:F7:4A:BD",
+    "host_name": "slc17xrf",
+    "ip_address": "10.241.90.244"
+  },
+  "ol7u5":{
+    "build_type": "OVM",
+    "version": "OL7",
+    "sub_version": "5",
+    "mac_address": "00:21:F6:45:DA:B3",
+    "host_name": "slc17xrg",
+    "ip_address": "10.241.90.245"
+  },
+  "ol7u6":{
+    "build_type": "OVM",
+    "version": "OL7",
+    "sub_version": "6",
+    "mac_address": "00:21:F6:3A:8F:F8",
+    "host_name": "slc17xrh",
+    "ip_address": "10.241.90.246"
+  },
+  "ol7u7": {
+    "build_type": "OVM",
+    "version": "OL7",
+    "sub_version": "7",
+    "mac_address": "00:21:F6:D8:18:75",
+    "host_name": "slc17xri",
+    "ip_address": "10.241.90.247"
+  },
+  "ol7u8": {
+    "build_type": "OVM",
+    "version": "OL7",
+    "sub_version": "8",
+    "mac_address": "00:21:F6:87:04:8D",
+    "host_name": "slc17xrl",
+    "ip_address": "10.241.90.250"
+  },
+  "ol7u9": {
+    "build_type": "OVM",
+    "version": "OL7",
+    "sub_version": "9",
+    "mac_address": "00:21:F6:AC:07:B5",
+    "host_name": "slc17xro",
+    "ip_address": "10.241.90.253"
+  }
+}

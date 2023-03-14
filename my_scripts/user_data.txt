@@ -1,0 +1,5 @@
+#!/bin/bash
+
+wget -O /tmp/customboot_v1.sh http://pds-chef-infrastructure.us.oracle.com/dis_chef_repo/Chef_file/customboot_v1.sh
+/bin/sh /tmp/customboot_v1.sh -i native -r OCI_NATIVE_CB.json -m "stephen.maggard@oracle.com"
+reboot -f

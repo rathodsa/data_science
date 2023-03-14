@@ -1,0 +1,99 @@
+[
+    {
+        "lb_name": "test",
+        "compartment_id": "",
+        "shape": "",
+        "subnet_ids": [""],
+        "min_bandwidth": "",
+        "max_bandwidth": "",
+        "is_private": "",
+        "lb_policy": "",
+        "lb_protocol": "",
+        "lb_port": "",
+        "healthchecker": {
+            "url_path": "",
+            "retries": "",
+            "timeoutInMillis": "",
+            "intervalInMillis": "",
+            "returncode": "",
+            "responseBodyRegex": ""
+        },
+        "backends": [
+            {
+                "ip_address": "",
+                "port": "",
+                "weight": 592,
+                "backup": false,
+                "drain": true,
+                "offline": false
+            },
+            {
+                "ip_address": "",
+                "port": "",
+                "weight": 592,
+                "backup": false,
+                "drain": true,
+                "offline": false
+            }
+        ],
+        "ssl_configuration": {
+            "verifyDepth": 579,
+            "verifyPeerCertificate": true,
+            "certificateName": "EXAMPLE-certificateName-Value",
+            "protocols": ["EXAMPLE--Value"],
+            "cipherSuiteName": "EXAMPLE-cipherSuiteName-Value",
+            "serverOrderPreference": "DISABLED"
+        },
+        "session_persistence_configuration": {
+            "cookieName": "EXAMPLE-cookieName-Value",
+            "disableFallback": false
+        },
+        "lb_cookie_session_persistence_configuration": {
+            "cookieName": "EXAMPLE-cookieName-Value",
+            "disableFallback": false,
+            "domain": "EXAMPLE-domain-Value",
+            "path": "EXAMPLE-path-Value",
+            "maxAgeInSeconds": 646,
+            "isSecure": false,
+            "isHttpOnly": true
+        },
+        "reserved_ips": [
+            {
+                "ip_id": ""
+            },
+            {
+                "ip_id": ""
+            }
+        ],
+        "listeners": [
+            {
+                "listener_name": "",
+                "hostnameNames": [" "],
+                "pathRouteSetName": "",
+                "port": "",
+                "sslConfiguration": {
+                    "verifyDepth": 32,
+                    "verifyPeerCertificate": true,
+                    "certificateName": "EXAMPLE-certificateName-Value",
+                    "protocols": ["EXAMPLE--Value"],
+                    "cipherSuiteName": "EXAMPLE-cipherSuiteName-Value",
+                    "serverOrderPreference": "ENABLED"
+                },
+                "connectionConfiguration": {
+                    "idleTimeout": 2,
+                    "backendTcpProxyProtocolVersion": 182
+                },
+                "ruleSetNames": [""]
+            }
+        ],
+        "certificates": [
+            {
+                "name": "",
+                "passphrase": "EXAMPLE-passphrase-Value",
+                "privateKey": "EXAMPLE-privateKey-Value",
+                "publicCertificate": "EXAMPLE-publicCertificate-Value",
+                "caCertificate": "EXAMPLE-caCertificate-Value"
+            }
+        ]
+    }
+]

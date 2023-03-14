@@ -1,0 +1,79 @@
+{
+"host_to_connect1": "slcav928.us.oracle.com",
+"host_to_connect2": "slcal653.us.oracle.com",
+"username": "root",
+"first_pass": "d2VsY29tZQ==",
+"std_pass": "UyQxdiFAbkVfcA==",
+  "ol6u10":{
+    "build_type": "KVM",
+    "version": "OL6",
+    "sub_version": "10",
+    "mac_address": "00:16:3E:50:E7:C0",
+    "host_name": "slc14rcr",
+    "ip_address": "10.240.224.158",
+    "base_dir": "base"
+  },
+  "ol6u4":{
+    "build_type": "KVM",
+    "version": "OL6",
+    "sub_version": "4",
+    "mac_address": "00:21:F6:EB:28:BD",
+    "host_name": "slc14rcs",
+    "ip_address": "10.240.224.159",
+    "base_dir": "base"
+  },
+  "ol6u6":{
+    "build_type": "KVM",
+    "version": "OL6",
+    "sub_version": "6",
+    "mac_address": "00:16:3E:6B:30:A6",
+    "host_name": "slc14rct",
+    "ip_address": "10.240.224.160",
+    "base_dir": "base"
+  },
+  "ol6u8":{
+     "build_type": "KVM",
+    "version": "OL6",
+    "sub_version": "8",
+    "mac_address": "00:16:3E:07:63:BB",
+    "host_name": "slc14rcu",
+    "ip_address": "10.240.224.161",
+    "base_dir": "base"
+  },
+  "ol7u4":{
+    "build_type": "KVM",
+    "version": "OL7",
+    "sub_version": "8",
+    "mac_address": "00:21:F6:93:88:B1",
+    "host_name": "slc15ikz",
+    "ip_address": "10.240.227.31",
+    "base_dir": "base"
+  },
+  "ol7u5":{
+    "build_type": "KVM",
+    "version": "OL7",
+    "sub_version": "6",
+    "mac_address": "00:21:F6:80:D0:2F",
+    "host_name": "slc15ila",
+    "ip_address": "10.240.227.32",
+    "base_dir": "base"
+  },
+  "ol8u1": {
+    "build_type": "KVM",
+    "version": "OL8",
+    "sub_version": "1",
+    "mac_address": "00:21:F6:FA:51:90",
+    "host_name": "slc15ilb",
+    "ip_address": "10.240.227.33",
+    "base_dir": "base/base"
+  },
+  "ol8u2": {
+    "build_type": "KVM",
+    "version": "OL8",
+    "sub_version": "2",
+    "mac_address": "00:16:3E:41:32:7C",
+    "host_name": "slc15ilc",
+    "ip_address": "10.240.227.34",
+    "base_dir": "base/base"
+  }
+}

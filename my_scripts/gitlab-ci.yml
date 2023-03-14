@@ -1,0 +1,58 @@
+stages:
+  - run_wrap
+  - run_windows
+  - run_onprm_ovm
+  - run_onprm_kvm
+
+variables:
+  comp_ocid: $compartment_ocid
+  image_names: $image_name
+  root_pass: $root_pass
+  image_name1: $image_name1
+  environ: $environ
+
+job1:
+  stage: run_wrap
+  tags:
+    - oit_image_pipeline
+  script:
+    - touch prerequisites/scripts/my_inputs.json
+    - chown gitlab-runner:gitlab-runner prerequisites/scripts/my_inputs.json
+    - chmod 755 prerequisites/scripts/my_inputs.json
+    - sudo jq --arg img "$root_pass" --arg img1 "$image_names" --arg cmp "$comp_ocid"  '.root_pass = $img | .image_names = $img1 | .com_ocid = $cmp' my_input1.json > prerequisites/scripts/my_inputs.json
+    - sudo python prerequisites/scripts/custom_wrap.py --json_file prerequisites/scripts/my_inputs.json
+    - sudo rm prerequisites/scripts/my_inputs.json
+  rules:
+    - if: '$environ == "linux"'
+  timeout: 4 hours 30 minutes
+
+job2:
+  stage: run_windows
+  tags:
+    - oit_image_pipeline
+  script:
+    - sudo python ImageBuild/Windows/windows_wrap.py
+  rules:
+    - if: '$environ == "windows"'
+  timeout: 6 hours 30 minutes
+
+job3:
+  stage: run_onprm_ovm
+  tags:
+    - oit_image_pipeline
+  script:
+    - sudo python3 ImageBuild/OKVM/main_executor_ovm.py >> /home/gitlab-runner/mainresult.txt
+  rules:
+    - if: '$environ == "onprem_linux_ovm"'
+  timeout: 6 hours 30 minutes
+
+
+job4:
+  stage: run_onprm_kvm
+  tags:
+    - oit_image_pipeline
+  script:
+    - sudo python3 ImageBuild/OKVM/main_executor_kvm.py >> /home/gitlab-runner/mainresult.txt
+  rules:
+    - if: '$environ == "onprem_linux_kvm"'
+  timeout: 6 hours 30 minutes
