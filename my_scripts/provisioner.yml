@@ -1,0 +1,109 @@
+---
+- hosts: web
+  #  become: yes
+  #become_method: su
+  #become_user: root
+  gather_facts: True
+  gather_subset:
+    - distribution_major_version
+    - distribution_version
+    - distribution
+  tasks:
+    - name: id,host
+      shell: "id;hostname -f"
+      register: ddd
+    - debug:
+            msg: "{{ddd.stdout}}"
+
+    - name: delete opc from user list
+      shell: "sed -i '/opc/d' /etc/passwd;sed -i '/opc/d' /etc/shadow;sed -i '/opc/d' /etc/group"
+    - name: check for chef status
+      shell: "egrep -i \"Chef run process exited unsuccessfully|Chef Client finished\" /root/.stinstall.log"
+      register: out1
+      until: out1.rc == 0
+      retries: 20
+      delay: 240
+
+    - name: fail the play when overlay script fails
+      fail:
+        msg: "overlay script failed"
+      when: "'Chef run process exited unsuccessfully' in out1.stdout"  
+
+    - debug:
+        msg: "{{ out1.stdout }}"
+    
+    - name: add the link if needed
+      file:
+        src: "/usr/libexec/platform-python"
+        dest: "/usr/bin/python"
+        state: link
+      when: ansible_distribution_version == '8.3' or ansible_distribution_version == '8.2' 
+
+    - name: reboot after overlay
+      reboot:
+              msg: "reboot by ansible"
+              connect_timeout: 30
+              reboot_timeout: 600
+              pre_reboot_delay: 0
+              post_reboot_delay: 30
+              test_command: uptime
+
+    - name: execute second script on local server
+      shell: "cd /tmp;wget  https://pds-chef-dr-infrastructure.us.oracle.com/dis_chef_repo/security/ol_cpu_patching.py;chmod +x ol_cpu_patching.py;./ol_cpu_patching.py  --monthly --security-patch --force-fix"
+      register: out2
+
+    - debug:
+        msg: "{{ out2.stdout }}"  
+
+    - name: fail the play when patching fails
+      fail:
+        msg: "patching failed"
+      when: (("OL_PATCH_SUCCESSFUL" not in out2.stdout) and ("SECURITY AND KERNEL PATCH IS ALREADY UPDATED" not in out2.stdout))
+
+    - name: add the link if needed
+      file:
+        src: "/usr/libexec/platform-python"
+        dest: "/usr/bin/python"
+        state: link
+      when: ansible_distribution_version == '8.3' or ansible_distribution_version == '8.2'
+
+    - name: reboot after patching
+      reboot:
+              msg: "reboot by ansible"
+              connect_timeout: 30
+              reboot_timeout: 600
+              pre_reboot_delay: 0
+              post_reboot_delay: 30
+              test_command: uptime
+
+
+#    - name: get the  cleanup script
+#      shell: "wget -O /root/image_cleanup.py  http://sca00kpe.us.oracle.com/playbook/image_cleanup.py"
+#      register: out_py
+
+#    - debug:
+#        msg: "{{ out_py.stdout }}"
+    - name: copy the image_cleanup file
+      copy:
+        src: /home/gitlab-runner/image_cleanup.py
+        dest: /root/image_cleanup.py
+        owner: root
+        group: root
+        mode: 0755
+#    - name: get the cleanup script on server
+#      uri:                                        
+#        url: "https://orahub.oci.oraclecorp.com/pe-oci-infra/oit-image-management-system/-/blob/development/ImageBuild/Linux/provisioners/image_cleanup.py"   
+#        method: GET                               
+#        user: "saikrishna.rathod"            
+#        password: "5eam-leSs1234"    
+#        force_basic_auth: yes                    
+#        dest: /root/image_cleanup.py          
+#        return_content: yes
+
+    - name: execute the cleanup script
+      shell: "python /root/image_cleanup.py"
+
+    - name: delete the cleanup script from server
+      file:
+        path: /root/image_cleanup.py
+        state: absent
