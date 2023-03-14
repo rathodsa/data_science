@@ -1,0 +1,943 @@
+http://slc16izo.us.oracle.com/ks/OVM-KVM-LINUX-OL70u4-X8664.cfg
+http://slc16izo.us.oracle.com/ks/OVM_KVM-LINUX-%s0u%s-X8664.cfg
+
+
+100.106.135.38  - peo-ol7u8-qi
+100.106.135.71  - peo-ol7u7-qi
+100.106.135.7  - peo-ol7u9-qi
+100.106.134.177 - peo-ol7u6-qi
+100.106.135.207 - peo-ol6u10-qi
+100.106.134.199 - peo-ol6u8-qi
+100.106.134.206 - peo-ol8u1-qi
+100.106.134.88 - peo-ol6u6-qi
+
+5eam-leSs123
+
+slc14rcr
+slc14rcs
+slc14rct
+slc14rcu
+slc15ikz
+slc15ila
+
+scp -i /tmp/.anskey -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no /kvm/VirtualDisks/%s root@slcal653:/var/www/html/images/VirtualDisk/%s_pipeline_22102021/
+
+
+hydr1121064814   - 8th Nov
+Welcome letter
+
+9550852182   -  mv
+
+	
+
+ol7u6 - dra
+slc15ilc - overlay finished after the loop
+ol7u8 - dra
+
+
+
+
+
+#!/bin/bash
+declare -r image_name74="$1"
+declare -r base_image="$2"
+declare -r root_pass="$3"
+touch /home/gitlab-runner/customeimage74.txt;chmod 755 /home/gitlab-runner/customeimage74.txt
+sudo jq --arg img "$base_image" --arg img1 "$image_name74"  '.let_image = $img | .image_name = $img1' /home/gitlab-runner/variables/variables74.json > /home/gitlab-runner/new-variables/new-variables74.json
+sudo /usr/local/bin/packer build -on-error=abort -var-file='/home/gitlab-runner/new-variables/new-variables74.json' /home/gitlab-runner/pcr/custom-image-build74.json >> /home/gitlab-runner/customeimage74.txt
+cust_image=`cat /home/gitlab-runner/customeimage74.txt | grep -ho 'ocid1\.image\.[a-z0-9.-]*'`
+echo "$cust_image,$image_name74"
+jq --arg x "$cust_image" '.[0].image_id = $x' /home/gitlab-runner/custom-instance/custom_instance74.json > /home/gitlab-runner/custom-instance/custom74_instance.json
+sudo python deploy/Instance-creation/oci_compute_instance.py --create_new --json_file /home/gitlab-runner/custom-instance/custom74_instance.json >> ans74.txt
+SER=`cat ans74.txt | grep IP | awk '{print $3}'`
+sleep 15m
+inst_id=`cat ans74.txt | grep ID | awk '{print $2}'`
+cmd1=`python3 /home/gitlab-runner/packer_inst.py $SER root $root_pass`
+echo $cmd1
+#if [ "$cmd1" == "Overlay is finished" ]; then
+#  sudo python deploy/Instance-creation/oci_compute_instance.py --terminate --instance_ids $inst_id --config /root/.oci/config
+#fi
+#rm /home/gitlab-runner/customeimage74.txt
+
+
+
+Feedback Vinod :
+
+Questions being asked on various devOps tools like ansible, Jenkins, git, doceker and kubernetes and LINUX
+
+ansible : He seems to be worked only on the terminal(ansible controller). No working knowledge on the tower as the questions were not answered
+Asked about ansible roles,tags and limits but did not able to answer with confidence.
+Asked one play book to copy file from server1 to server2 where SCP option is disabled.
+
+screenshot:
+
+Jenkins :
+he knows basics of Jenkins but when asked more about pipelines, security related questions nopractical knowledge
+He has theoritical knowledge on pipelines but no working knowledge as such.
+No working knowledge on Jenkins administration like configuring security roles and system config of Jenkins.
+
+GIT:
+He was able to answer basic questions like git add,commit, branching strategy of git.
+when questions like merge conflicts etc were asked , he was not that confident.
+
+Docker:
+He has knowledge on writing the dockerfiles but no working knowledge on docker compose, UCP etc..
+
+Linux :
+
+Questions:
+what is the difference between soft link and hard link:
+ans: did not came across
+
+what is the concept of inode?
+Not aware of that.
+
+how will you check memory related queries in linux.
+he answered correctly to use free, top etc
+
+what all editors you worked?
+vi ( given answers about various modes)
+
+what is process?
+he explained but not confident enough in the answer.
+
+how do you start the service?
+service <service name? which is wrong answer and not so confident on the answer.
+
+Kubernetes :
+
+he was able to answer the basic questions but not confident when i asked questions on replicasets, deployments etc..
+
+
+ol7u6 - slc15ila  - dra
+ol7u8 - slc15ikz  - dra
+ol6u6 - black screen   slc14rct
+
+
+
+peo-ol6u4-qi,peo-ol6u6-qi,peo-ol6u8-qi,peo-ol6u10-qi,peo-ol7u4-qi,peo-ol7u6-qi,peo-ol7u7-qi,peo-ol7u8-qi,peo-ol7u9-qi,peo-ol8u1-qi,peo-ol8u2-qi,peo-ol8u3-qi
+
+100.106.135.252  - ol7u7
+100.106.135.161  - ol7u6
+100.106.134.43   - ol7u4
+100.106.135.123  - ol7u8
+100.106.134.203  - ol7u9
+100.106.135.196  - ol6u8
+100.106.134.216  - ol6u10
+100.106.134.205  - ol6u6
+100.106.134.100  - ol6u4
+100.106.134.70  - ol8u1
+
+4904+56621  =
+
+
+Mahesh Mudkhedkar  12:56 PM
+for linux kernel you can use below course
+https://www.linkedin.com/learning/advanced-linux-the-linux-kernel-2/what-is-the-linux[…]nce=true&autoSkip=true&autoplay=true&resume=false&u=42751868
+LinkedInLinkedIn
+What is the Linux kernel? - CentOS Video Tutorial | LinkedIn Learning, formerly Lynda.com
+Learn about what the Linux kernel is.
+
+
+
+Mahesh Mudkhedkar  12:59 PM
+https://www.linkedin.com/learning/cert-prep-lpic-1-exam-101-version-5-0/what-you-shou[…]rningPath%3A5ecea165498ef01cc73d2284&resume=false&u=42751868
+LinkedInLinkedIn
+What you should know - Linux Video Tutorial | LinkedIn Learning, formerly Lynda.com
+Learn about the required hardware and software used in this course, including setup, alternative names and versions, essential hardware, hosts, available drive space, and more.
+1:00
+https://www.linkedin.com/learning/paths/become-a-linux-system-administrator?u=42751868
+LinkedInLinkedIn
+Become a Linux System Administrator Learning Path | LinkedIn Learning, formerly Lynda.com
+This learning path helps IT pros develop the Linux system administration skills they need to manage and maintain a Linux environment. Beginning with an overview and installation, you can progress to package management, shells and processes, and intermediate and advanced Linux skills and tools.
+
+
+
+git clone -b development https://saikrishna.rathod@orahub.oci.oraclecorp.com/pe-oci-infra/oit-image-management-system.git
+
+
+ssh_args in ansible.cfg
+
+ssh_args = -C -o ControlMaster=auto -o ControlPersist=60s -o UserKnownhosts=/dev/null -o StrictHostKeyChecking=no
+
+
+ssh_args = -C -o ControlMaster=auto -o ControlPersist=60s  -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no    - correct
+
+
+
+
+
+Native - image has to be picked by pipeline   linux and wondows
+Run OCI and on prem in parallel
+
+
+
+#Issue with password :
+Hello Team, when i define the password in orahub variables, the same password is not getting printed in my pipeline. some of special characters are missing in password. any mechanism to handle with special chars in password string?
+8 replies
+Resolution :
+$
+Seems like a bug, the workaround is In the variable value, use a double dollar sign instead of a single.
+that worked.. thank you so much Moreau
+
+
+@Stuart Caie
+
+
+
+Adilabad  - KB Asifabad, Mancherial, Nirmal, adilabad
+Nizamabad  -
+Karimnagar - Siricilla, Siddipet
+Khammam - khammam, bhadradri,
+Warangal - urban
+Nalgonda
+Medak
+Hyderabad
+Rangareddy
+Krishna
+Guntur
+Vishakha
+Vijayanagaram
+Srikakulam
+West godavari
+East godavari
+Vijayawada
+Kurnul
+Nellore
+Chitthoor
+Kadapa
+Ananthpuram
+Lathoor
+Chadrapur
+Nagpur
+Moradabad
+Kanpur
+Lucknow
+Bidar
+Bangalore
+Mangalore
+baramulla
+Poonch
+Allahabad
+Aligarh
+Agra
+Ghorakpur
+kozikode
+vayanad
+Jaipur
+
+
+D35911-6b60c
+
+#Initial instance :
+#ps1_sysnative
+Set-SmbClientConfiguration -EnableInsecureGuestLogons:$true -force -ErrorAction SilentlyContinue
+write "charan.baisetty@oracle.com" | out-file c:\windows\temp\email_id.txt
+iex (gc \\100.111.240.86\image\Apps\Image_Validation\custom_simple | out-string)
+
+#ps1_sysnative
+Set-SmbClientConfiguration -EnableInsecureGuestLogons:$true -force -ErrorAction SilentlyContinue
+write "charan.baisetty@oracle.com" | out-file c:\windows\temp\email_id.txt
+iex (gc \\100.111.240.86\image\Apps\Image_Validation\native_simple | out-string)
+
+
+#with new template instance :
+
+#ps1_sysnative
+Set-SmbClientConfiguration -EnableInsecureGuestLogons:$true -force -ErrorAction SilentlyContinue
+write "charan.baisetty@oracle.com" | out-file c:\windows\temp\email_id.txt
+iex (gc \\100.111.240.86\image\Apps\custom_simple | out-string)
+
+#ps1_sysnative
+Set-SmbClientConfiguration -EnableInsecureGuestLogons:$true -force -ErrorAction SilentlyContinue
+write "charan.baisetty@oracle.com" | out-file c:\windows\temp\email_id.txt
+iex (gc \\100.111.240.86\image\Apps\native_simple | out-string)
+
+
+From
+2014, a scheme called Pradhan Mantri Jan-Dhan Yojana is available in which people in India are encouraged to open bank  accounts.  Besides  promoting savings habit, this scheme intends to transfer all the benefits of government schemes  and  subsidies  to  account holders  directly.  Each  bank  account
+holder is also entitled to Rs. 1- 2 lakh accidental insurance cover
+
+
+Issue: ol8u1 :
+Issue with ol8u1 at image cleanup step in provisioner.yml :
+
+oracle-oci: TASK [execute the cleanup script] **********************************************
+oracle-oci: fatal: [100.106.154.6]: FAILED! => {"changed": true, "cmd": "python2 /root/image_cleanup.py", "delta": "0:00:00.119109", "end": "2021-12-31 09:34:45.787656", "msg": "non-zero return code", "rc": 1, "start": "2021-12-31 09:34:45.668547", "stderr": "Failed to cleanup files", "stderr_lines": ["Failed to cleanup files"], "stdout": "", "stdout_lines": []}
+
+Manually also i have verifed the same i am seeing the same issue :
+
+[root@instance20211231062620-562536 ~]# python image_cleanup.py
+Failed to cleanup files
+
+i have placed a print statement in image_cleanup script :
+
+[root@instance20211231062620-562536 ~]# python2 image_cleanup.py
+/scratch/*
+Failed to cleanup files
+
+it was unable to delete the /scratch file system..
+
+/scratch directory is there but /scratch file system is not there
+
+i tried to remove rm -rf podman under /scratch , i have seen following issue :
+
+[root@instance20211231062620-562536 scratch]# rm -rf podman
+rm: cannot remove 'podman/storage/overlay': Device or resource busy
+[root@instance20211231062620-562536 scratch]#
+
+
+OCI CLI :
+
+To Switch between profile, we need to pass the profile name:
+
+bash-3.2$ oci os ns get
+{
+ "data": "idtj03adm895"
+}
+
+bash-3.2$ oci os ns get --profile DEVAPP
+{
+ "data": "idghdmhafadh"
+}
+bash-3.2$ oci os ns get --profile PRODAPP
+{
+ "data": "idtj03adm895"
+}
+bash-3.2$
+
+
+
+
+
+
+curl -s -k ${chefRepo}/DEVCUSTOM.tar | tar xv -C /var/
+
+
+chefRepo="https://pds-chef-infrastructure.us.oracle.com/dis_chef_repo/bdsconfig/Prod/tarballs"
+
+
+
+
+#!/bin/bash
+infra_envconfig='DEVCUSTOM'
+infra_rolename='CUSTOM'
+infra_confname='OCI_CUSTOM'
+wget -O /tmp/customboot_v1.sh http://pds-chef-infrastructure.us.oracle.com/dis_chef_repo/Chef_file/customboot_v1.sh
+/bin/sh /tmp/customboot_v1.sh -i DEVCUSTOM -r CUSTOM_BUILD_CB.json -m "root@localhost"
+reboot -f
+
+#documentation for pipeline step by step procedure :
+https://confluence.oraclecorp.com/confluence/display/DELIVERY/Image+Management+and+Patch+Certification+for+Oracle+IT+Services
+you can create one page under this
+
+1) Navigate to URL https://orahub.oci.oraclecorp.com/pe-oci-infra/oit-image-management-system/-/pipelines and click on "Run pipeline"
+select the branch as "development" and give the variable name and its value based requirement
+If you need to run OCI linux : environ = linux
+                   OCI windows : environ = windows
+                   on-prem linux : environ = on_prem
+
+then click "Run pipeline"
+
+2) IF you are running OCI linux build, you need go to settings --> CICD  --> variable and update the image_names variable with "6.4,6.6,6.8,6.10,7.4,7.6,7.7,7.8,7.9,8.1,8.2,8.3,8.5" or what all versions you want to build the images with , separated.
+3) For windows, no need to add the anything.
+
+
+cd /var/chef/cookbooks ; chef-client -z -o install_qualys_agent
+
+/dis_chef_repo/bdsconfig/Dev/tarballs
+
+/dis_chef_repo/bdsconfig/Dev/tarballs
+sh /scratch/chef/build.sh
+slc11xgi
+
+/dis_chef_repo/bdsconfig/Dev/tarballs
+sh /scratch/chef/build.sh
+slc11xgi
+
+
+
+6.4,6.6,6.8,6.10,7.4,7.6,7.7,7.8,7.9,8.1,8.2,8.3,8.4,8.5
+
+FARM based
+different branch in the curent repo
+bulk image with different
+init script will change
+same process
+take base image
+using different cloud init script
+from same compartment
+8.4, 8.5 FARM
+
+
+ex : ee-ol8u4-qi-rdbms, ee-ol8u5-qi-rdbms, ee-dbdev-ol7u9-aarch64,ee-dbdev-ol8u4-aarch64
+
+
+ee-ol8u4-qi-rdbms
+
+ol8u4
+7u4
+7u6
+
+
+OCI Linux
+Cloud init  -
+
+
+init script  - Srikanth to provide
+
+Arch based builds :
+Ashburn region
+images :
+
+ee-ol8u4-aarch64-qi
+compartment : ENTSS
+have a different config file in the same repo
+
+base image
+build template
+
+
+
+JAN To do list :
+2nd phase pipeline :
+3rd one : push to Prod
+
+FARM based
+Arch based
+https://confluence.oraclecorp.com/confluence/display/OITGLOBAL/PEO+OCI-Prod+Tenancies    - qualys for arch based
+Windows pipeline:
+
+
+
+
+https://www.ezyzip.com/convert-pdf-to-zip.html  - PDF
+
+3073 04459936
+
+==================================================
+Windows on-prem steps :
+
+1. Create a VM in Oracle Virtaul Box
+2. Boot using OS ISO downlaoded from DSSM
+3. Windows update
+4. Antivirus
+5. Install 7 Zip
+For developer images
+Apart from the above steps  install all required sodtware
+6. For capturing the - sysprep the system
+7. Covert capture VDI image to RAW format
+Upload to object store
+
+
+KVM on prem:
+
+virt-install -d --mac=00:21:F6:B7:5E:56 -n adc01mul --os-type=Linux --ram=6192 --vcpus=2 '--extra-args=ks=http://slc16izo.us.oracle.com/ks/OVM_KVM-LINUX-OL60u4-X8664.cfg  ip=10.229.112.84 netmask=255.255.248.0 gateway=10.229.112.1 dns=10.231.225.65' --virt-type kvm --disk path=/data/ap_imaging/adc01mul,size=50 --location http://adcab485.us.oracle.com/bootable/OracleLinux/OL6/4/base/x86_64/ --graphics vnc,listen=0.0.0.0
+  virt-install -d --mac=00:21:F6:66:D3:E0 -n adc01mum --os-type=Linux --ram=6192 --vcpus=2 '--extra-args=ks=http://slc16izo.us.oracle.com/ks/OVM_KVM-LINUX-OL60u6-X8664.cfg  ip=10.229.112.85 netmask=255.255.248.0 gateway=10.229.112.1 dns=10.231.225.65' --virt-type kvm --disk path=/data/ap_imaging/adc01mum,size=50 --location http://adcab485.us.oracle.com/bootable/OracleLinux/OL6/6/base/x86_64/ --graphics vnc,listen=0.0.0.0
+  virsh undefine adc01mum
+  virt-install -d --mac=00:21:F6:66:D3:E0 -n adc01mum --os-type=Linux --ram=6192 --vcpus=2 '--extra-args=ks=http://slc16izo.us.oracle.com/ks/OVM_KVM-LINUX-OL60u6-X8664.cfg  ip=10.229.112.85 netmask=255.255.248.0 gateway=10.229.112.1 dns=10.231.225.65' --virt-type kvm --disk path=/data/ap_imaging/adc01mum,size=50 --location http://adcab485.us.oracle.com/bootable/OracleLinux/OL6/6/base/x86_64/ --graphics vnc,listen=0.0.0.0
+  virsh undefine adc01mun
+  virt-install -d --mac=00:21:F6:44:EA:D6 -n adc01mun --os-type=Linux --ram=6192 --vcpus=2 '--extra-args=ks=http://slc16izo.us.oracle.com/ks/OVM_KVM-LINUX-OL60u8-X8664.cfg  ip=10.229.112.104 netmask=255.255.248.0 gateway=10.229.112.1 dns=10.231.225.65' --virt-type kvm --disk path=/data/ap_imaging/adc01mun,size=50 --location http://adcab485.us.oracle.com/bootable/OracleLinux/OL6/8/base/x86_64/ --graphics vnc,listen=0.0.0.0
+  virsh undefine adc01muo
+  virt-install -d --mac=00:21:F6:4B:58:A2 -n adc01muo --os-type=Linux --ram=6192 --vcpus=2 '--extra-args=ks=http://slc16izo.us.oracle.com/ks/OVM_KVM-LINUX-OL60u10-X8664.cfg  ip=10.229.112.163 netmask=255.255.248.0 gateway=10.229.112.1 dns=10.231.225.65' --virt-type kvm --disk path=/data/ap_imaging/adc01muo,size=50 --location http://adcab485.us.oracle.com/bootable/OracleLinux/OL6/10/base/x86_64/ --graphics vnc,listen=0.0.0.0
+  virt-install -d --mac=00:21:F6:F4:5C:CE -n adc01muq --os-type=Linux --ram=6192 --vcpus=2 '--extra-args=ks=http://slc16izo.us.oracle.com/ks/OVM-KVM-LINUX-OL70u4-X8664.cfg  ip=10.229.112.219 netmask=255.255.248.0 gateway=10.229.112.1 dns=10.231.225.65' --virt-type kvm --disk path=/data/ap_imaging/adc01muq,size=50 --location http://adcab485.us.oracle.com/bootable/OracleLinux/OL7/4/base/x86_64/ --graphics vnc,listen=0.0.0.0
+  virsh undefine adc01muq
+  virt-install -d --mac=00:21:F6:F4:5C:CE -n adc01muq --os-type=Linux --ram=6192 --vcpus=2 '--extra-args=ks=http://slc16izo.us.oracle.com/ks/OVM-KVM-LINUX-OL70u4-X8664.cfg  ip=10.229.112.219 netmask=255.255.248.0 gateway=10.229.112.1 dns=10.231.225.65' --virt-type kvm --disk path=/data/ap_imaging/adc01muq,size=50 --location http://adcab485.us.oracle.com/bootable/OracleLinux/OL7/4/base/x86_64/ --graphics vnc,listen=0.0.0.0
+
+  virt-install -d --mac=00:21:F6:F6:6F:48 -n adc01mvp --os-type=Linux --ram=6192 --vcpus=2 '--extra-args=ks=http://slc16izo.us.oracle.com/ks/OVM-KVM-LINUX-OL70u6-X8664.cfg  ip=10.229.112.232 netmask=255.255.248.0 gateway=10.229.112.1 dns=10.231.225.65' --virt-type kvm --disk path=/data/ap_imaging/adc01mvp,size=50 --location http://adcab485.us.oracle.com/bootable/OracleLinux/OL7/6/base/x86_64/ --graphics vnc,listen=0.0.0.0
+  virt-install -d --mac=00:21:F6:93:EA:5C -n adc01mvq --os-type=Linux --ram=6192 --vcpus=2 '--extra-args=ks=http://slc16izo.us.oracle.com/ks/OVM-KVM-LINUX-OL70u7-X8664.cfg  ip=10.229.112.233 netmask=255.255.248.0 gateway=10.229.112.1 dns=10.231.225.65' --virt-type kvm --disk path=/data/ap_imaging/adc01mvq,size=50 --location http://adcab485.us.oracle.com/bootable/OracleLinux/OL7/7/base/x86_64/ --graphics vnc,listen=0.0.0.0
+  virt-install -d --mac=00:21:F6:93:EA:5C -n adc01mvq --os-type=Linux --ram=6192 --vcpus=2 '--extra-args=ks=http://slc16izo.us.oracle.com/ks/OVM_KVM-LINUX-OL70u7-X8664.cfg  ip=10.229.112.233 netmask=255.255.248.0 gateway=10.229.112.1 dns=10.231.225.65' --virt-type kvm --disk path=/data/ap_imaging/adc01mvq,size=50 --location http://adcab485.us.oracle.com/bootable/OracleLinux/OL7/7/base/x86_64/ --graphics vnc,listen=0.0.0.0
+  virsh undefine adc01mvr
+  virt-install -d --mac=00:21:F6:52:8D:55 -n adc01mvr --os-type=Linux --ram=6192 --vcpus=2 '--extra-args=ks=http://slc16izo.us.oracle.com/ks/OVM_KVM-LINUX-LINUX-OL70u8-X8664.cfg  ip=10.229.112.239 netmask=255.255.248.0 gateway=10.229.112.1 dns=10.231.225.65' --virt-type kvm --disk path=/data/ap_imaging/adc01mvr,size=50 --location http://adcab485.us.oracle.com/bootable/OracleLinux/OL7/8/base/x86_64/ --graphics vnc,listen=0.0.0.0
+  virsh undefine adc01mvs
+  virt-install -d --mac=00:21:F6:D8:4F:B2 -n adc01mvs --os-type=Linux --ram=6192 --vcpus=2 '--extra-args=ks=http://slc16izo.us.oracle.com/ks/OVM_KVM-LINUX-LINUX-OL70u9-X8664.cfg  ip=10.229.112.240 netmask=255.255.248.0 gateway=10.229.112.1 dns=10.231.225.65' --virt-type kvm --disk path=/data/ap_imaging/adc01mvs,size=50 --location http://adcab485.us.oracle.com/bootable/OracleLinux/OL7/9/base/x86_64/ --graphics vnc,listen=0.0.0.0
+virt-install -d --mac=00:21:F6:8D:51:00 -n adc01mvt --os-type=Linux --ram=6192 --vcpus=2 '--extra-args=ks=http://slc16izo.us.oracle.com/ks/OVM_KVM-LINUX-OL80u1-X8664.cfg  ip=10.229.112.241 netmask=255.255.248.0 gateway=10.229.112.1 dns=10.231.225.65' --virt-type kvm --disk path=/data/ap_imaging/adc01mvt,size=50 --location http://adcab485.us.oracle.com/bootable/OracleLinux/OL8/1/base/base/x86_64/ --graphics vnc,listen=0.0.0.0
+  virsh undefine adc01mvu
+  virt-install -d --mac=00:21:F6:EC:79:38 -n adc01mvu --os-type=Linux --ram=6192 --vcpus=2 '--extra-args=ks=http://slc16izo.us.oracle.com/ks/OVM_KVM-LINUX-OL80u2-X8664.cfg  ip=10.229.112.242 netmask=255.255.248.0 gateway=10.229.112.1 dns=10.231.225.65' --virt-type kvm --disk path=/data/ap_imaging/adc01mvu,size=50 --location http://adcab485.us.oracle.com/bootable/OracleLinux/OL8/2/base/base/x86_64/ --graphics vnc,listen=0.0.0.0
+  virt-install -d --mac=00:21:F6:99:91:67 -n adc01mvv --os-type=Linux --ram=6192 --vcpus=2 '--extra-args=ks=http://slc16izo.us.oracle.com/ks/OVM_KVM-LINUX-OL80u3-X8664.cfg  ip=10.229.112.243 netmask=255.255.248.0 gateway=10.229.112.1 dns=10.231.225.65' --virt-type kvm --disk path=/data/ap_imaging/adc01mvv,size=50 --location http://adcab485.us.oracle.com/bootable/OracleLinux/OL8/3/base/base/x86_64/ --graphics vnc,listen=0.0.0.0
+  virt-install -d --mac=00:21:F6:B2:F0:1E -n adc01mvw --os-type=Linux --ram=6192 --vcpus=2 '--extra-args=ks=http://slc16izo.us.oracle.com/ks/OVM_KVM-LINUX-OL80u4-X8664.cfg  ip=10.229.112.249 netmask=255.255.248.0 gateway=10.229.112.1 dns=10.231.225.65' --virt-type kvm --disk path=/data/ap_imaging/adc01mvw,size=50 --location http://adcab485.us.oracle.com/bootable/OracleLinux/OL8/4/base/base/x86_64/ --graphics vnc,listen=0.0.0.0
+  virt-install -d --mac=00:21:F6:B2:F0:1E -n adc01mvw --os-type=Linux --ram=6192 --vcpus=2 '--extra-args=ks=http://slc16izo.us.oracle.com/ks/OVM_KVM-LINUX-OL80u4-X8664.cfg  ip=10.229.112.249 netmask=255.255.248.0 gateway=10.229.112.1 dns=10.231.225.65' --virt-type kvm --disk path=/data/ap_imaging/adc01mvw,size=50 --location http://adcab485.us.oracle.com/bootable/OracleLinux/OL8/4/baseos/base/x86_64/ --graphics vnc,listen=0.0.0.0
+
+
+virt-install -d --mac=00:21:F6:66:D3:E0 -n adc01mum --os-type=Linux --ram=6192 --vcpus=2 '--extra-args=ks=http://slc16izo.us.oracle.com/ks/OVM_KVM-LINUX-OL60u6-X8664.cfg  ip=10.229.112.85 netmask=255.255.248.0 gateway=10.229.112.1 dns=10.231.225.65' --virt-type kvm --disk path=/data/ap_imaging/adc01mum,size=50 --location http://adcab485.us.oracle.com/bootable/OracleLinux/OL6/6/base/x86_64/ --graphics vnc,listen=0.0.0.0
+
+
+virt-install -d --mac=00:21:F6:93:EA:5C -n adc01mvq --os-type=Linux --ram=8192 --vcpus=2 '--extra-args=ks=http://slc16izo.us.oracle.com/ks/OVM_KVM-LINUX-OL70u7-X8664.cfg ip=10.229.112.233 netmask=255.255.248.0 gateway=10.240.224.1 dns=10.231.225.65' --virt-type kvm --disk path=/kvm/VirtualDisk/adc01mvq,size=50 --location http://pd-yum-slc-01.us.oracle.com/bootable/OracleLinux/OL7/7/base/x86_64/ --graphics vnc,listen=0.0.0.0
+
+
+for ol6u6 and u4, we have to select the --touek4 option in the patching.
+
+
+virt-install -d --mac=00:21:F6:44:EA:D6 -n adc01mun --os-type=Linux --ram=6192 --vcpus=2 '--extra-args=ks=http://slc16izo.us.oracle.com/ks/OVM_KVM-LINUX-OL60u8-X8664.cfg  ip=10.229.112.104 netmask=255.255.248.0 gateway=10.229.112.1 dns=10.231.225.65' --virt-type kvm --disk path=/data/ap_imaging/adc01mun,size=50 --location http://adcab485.us.oracle.com/bootable/OracleLinux/OL6/8/base/x86_64/ --graphics vnc,listen=0.0.0.0
+
+virt-install -d --mac=00:21:F6:44:EA:D6 -n adc01mun --os-type=Linux --ram=8192 --vcpus=2 '--extra-args=ks=http://slc16izo.us.oracle.com/ks/OVM_KVM-LINUX-OL60u8-X8664.cfg ip=10.229.112.104 netmask=255.255.248.0 gateway=10.240.224.1 dns=10.231.225.65' --virt-type kvm --disk path=/kvm/VirtualDisk/adc01mun,size=50 --location http://pd-yum-slc-01.us.oracle.com/bootable/OracleLinux/OL6/8/base/x86_64/ --graphics vnc,listen=0.0.0.0
+
+
+
+
+Request 40441410 was submitted for approval  - OCNA
+
+
+==========================================================================================
+Windows On-prem steps for automation
+
+1) Virt install command
+2) Once the booting is done, it will come on to the network
+
+1)
+virt-install --mac=00:21:F6:D8:18:75  --name=slc17xri --vnc --hvm --vcpu=2 --ram=6503  --disk /OVS/Repositories/F75CF23BD44F468AA089698044CFEDC9/Windows2012simple.raw --import --os-type=windows --disk path=/OVS/Repositories/F75CF23BD44F468AA089698044CFEDC9/VirtualDisks/slc17xri_root.img
+
+sleep5 min
+
+
+1) Execute the virt-install command which will boot the machine using raw file we provide along with the command
+2) Once booting is complete, after couple of minutes(5 - 7 min) try to rdp to server.
+3) if rdp is successfull, copy the cloud init script on to the server and run it(work with Charan for commands to remotely implement this script)
+4) when cloud init script is triggered, at an interval of 30 minutes for 20 iterations, check the status of the cloud init script.
+5) Discussion to be followed for patching script
+6) cleanup script - how do we run( In OCI windows, we are terminating the instances )
+7) we need commands/sysprep commands to create image of this instance.
+
+
+
+
+
+Kirana B T  7:01 PM
+https://www.linkedin.com/learning/python-essential-training-2018/welcome?autoAdvance=true&autoSkip=false&autoplay=true&resume=true&u=42751868
+LinkedInLinkedIn
+Welcome - Python Video Tutorial | LinkedIn Learning, formerly Lynda.com
+Learn about what the goals of this course are, and what you can expect to learn.
+
+
+
+
+type='vnc' port='5900'
+
+
+type='vnc' port='5901'
+
+
+type='vnc' port='5902'
+
+
+type='vnc' port='5903'
+
+
+
+
+
+[root@imagerunner gitlab-runner]# rm -rf /home/gitlab-runner/builds/RzvMNbyg/0/pe-oci-infra/oit-image-management-system/prerequisites/scripts/oci_oit_logging_sdk/__pycache__/
+[root@imagerunner gitlab-runner]# ls -lthra /home/gitlab-runner/builds/RzvMNbyg/0/pe-oci-infra/oit-image-management-system/prerequisites/scripts/oci_oit_logging_sdk
+
+rm -rf /home/gitlab-runner/builds/RzvMNbyg/0/pe-oci-infra/oit-image-management-system/ImageBuild/OKVM/windows/oci_oit_logging_sdk/__pycache__/
+
+
+rm -rf /home/gitlab-runner/builds/RzvMNbyg/0/pe-oci-infra/oit-image-management-system/ImageBuild/OKVM/windows/oci_oit_logging_sdk/__pycache__/
+
+service_name, image_name, host_name, image_build_status, snapshot_date, Image_build_start_time, Image_build_end_time,Image_validation_start_time, Image_validation_end_time
+
+Vijitha
+Vineetha
+Vinushree
+
+
+https://www.packer.io/plugins/builders/oracle/oci#instance_defined_tags_json  - tags through packer
+
+
+39593987  -39593987
+
+===============================================================================
+04/25 - build
+{
+"host_to_connect1": "slcav928.us.oracle.com",
+"host_to_connect2": "adcab350.us.oracle.com",
+"username": "root",
+"first_pass": "d2VsY29tZQ==",
+"std_pass": "UyQxdiFAbkVfcA==",
+  "ol6u6":{
+    "build_type": "KVM",  - 5908   - working in progress
+    "version": "OL6",
+    "sub_version": "6",
+    "mac_address": "00:21:F6:66:D3:E0",
+    "host_name": "adc01mum",
+    "ip_address": "10.229.112.85",
+    "base_dir": "base"
+  },
+  "ol6u4":{
+    "build_type": "KVM",
+    "version": "OL6",
+    "sub_version": "4",
+    "mac_address": "00:21:F6:B7:5E:56",
+    "host_name": "adc01mul",
+    "ip_address": "10.229.112.84",
+    "base_dir": "base"
+  },
+  "ol6u8":{
+    "build_type": "KVM",  - 5906   - in progress
+    "version": "OL6",
+    "sub_version": "8",
+    "mac_address": "00:21:F6:44:EA:D6",
+    "host_name": "adc01mun",
+    "ip_address": "10.229.112.104",
+    "base_dir": "base"
+  },
+  "ol6u10":{
+     "build_type": "KVM",
+    "version": "OL6",
+    "sub_version": "10",
+    "mac_address": "00:21:F6:4B:58:A2",
+    "host_name": "adc01muo",
+    "ip_address": "10.229.112.163",
+    "base_dir": "base"
+  },
+  "ol7u4":{
+    "build_type": "KVM",   - 5909  - dracut
+    "version": "OL7",
+    "sub_version": "4",
+    "mac_address": "00:21:F6:F4:5C:CE",
+    "host_name": "adc01muq",
+    "ip_address": "10.229.112.219",
+    "base_dir": "base"
+  },
+  "ol7u6":{
+    "build_type": "KVM",  - 5904 - dracut
+    "version": "OL7",
+    "sub_version": "6",
+    "mac_address": "00:21:F6:F6:6F:48",
+    "host_name": "adc01mvp",
+    "ip_address": "10.229.112.232",
+    "base_dir": "base"
+  },
+  "ol7u7": {
+    "build_type": "KVM",  5902 - in progress
+    "version": "OL7",
+    "sub_version": "7",
+    "mac_address": "00:21:F6:93:EA:5C",
+    "host_name": "adc01mvq",
+    "ip_address": "10.229.112.233",
+    "base_dir": "base"
+  },
+  "ol7u8": {
+    "build_type": "KVM",  5905  - dracut
+    "version": "OL7",
+    "sub_version": "8",
+    "mac_address": "00:21:F6:52:8D:55",
+    "host_name": "adc01mvr",
+    "ip_address": "10.229.112.239",
+    "base_dir": "base"
+  },
+  "ol7u9": {
+    "build_type": "KVM",  - 5907  - in progress
+    "version": "OL7",
+    "sub_version": "9",
+    "mac_address": "00:21:F6:D8:4F:B2",
+    "host_name": "adc01mvs",
+    "ip_address": "10.229.112.240",
+    "base_dir": "base"
+  },
+  "ol8u1": {
+    "build_type": "KVM",  - 5910  - in progress
+    "version": "OL8",
+    "sub_version": "1",
+    "mac_address": "00:21:F6:8D:51:00",
+    "host_name": "adc01mvt",
+    "ip_address": "10.229.112.241",
+    "base_dir": "base/base"
+  },
+  "ol8u2": {
+    "build_type": "KVM",  5903  - in progress
+    "version": "OL8",
+    "sub_version": "2",
+    "mac_address": "00:21:F6:EC:79:38",
+    "host_name": "adc01mvu",
+    "ip_address": "10.229.112.242",
+    "base_dir": "base/base"
+  },
+  "ol8u3": {
+    "build_type": "KVM",   - 5911  - in progress
+    "version": "OL8",
+    "sub_version": "3",
+    "mac_address": "00:21:F6:99:91:67",
+    "host_name": "adc01mvv",
+    "ip_address": "10.229.112.243",
+    "base_dir": "base/base"
+  },
+  "ol8u4": {
+    "build_type": "KVM",
+    "version": "OL8",
+    "sub_version": "4",
+    "mac_address": "00:21:F6:B2:F0:1E",
+    "host_name": "adc01mvw",
+    "ip_address": "10.229.112.249",
+    "base_dir": "baseos/base"
+  },
+  "ol8u5": {
+    "build_type": "KVM",   - 5912  - in progress
+    "version": "OL8",
+    "sub_version": "5",
+    "mac_address": "00:21:F6:0A:A6:B2",
+    "host_name": "adc01mvx",
+    "ip_address": "10.229.112.250",
+    "base_dir": "baseos/base"
+  }
+}
+
+
+win10 devel - port not open for connection to server because of the fire wall issue
+
+win 12 devel has also issues - firewall connection issue
+
+
+bare os : Individually working
+
+
+devel 2019 :
+
+Issue while running the cloud init :
+
+OpenError: [10.229.68.137] Connecting to remote server 10.229.68.137 failed with the following error message : Authorization failed For more information, see the about_Remote_Troubleshooting Help topic.
+OpenError: [10.229.68.137] Connecting to remote server 10.229.68.137 failed with the following error message : Authorization failed For more information, see the about_Remote_Troubleshooting Help topic.
+OpenError: [10.229.68.137] Connecting to remote server 10.229.68.137 failed with the following error message : Authorization failed For more information, see the about_Remote_Troubleshooting Help topic.
+
+bareos 2019 :
+
+sysprep_bareos_win2019_v07
+
+OpenError: [10.229.68.143] Connecting to remote server 10.229.68.143 failed with the following error message : Authorization failed For more information, see the about_Remote_Troubleshooting Help topic.
+
+
+
+password less sudo for rduser working only from the bastion hosts. it needs to include the subnets related to gitlab-runners.
+ldap home directory for rduser got created on on-premise only. in OCI where, we are using nfs mounts doesnt have the centralized home directory for rduser.
+
+
+
+
+doit -1 -e /usr/bin/ssh -h cm_failed_onprem -c "unset http_proxy HTTPS_PROXY https_proxy HTTP_PROXY;curl -k -s -o /tmp/details.sh https://pds-chef-infrastructure.us.oracle.com/dis_chef_repo/Chef_file/uptake.sh;chmod +x /tmp/details.sh;/tmp/details.sh custom" -y -f 100 -w 1800 -p cm_failed_onprem.log
+
+
+
+doit -1 -e /usr/bin/ssh -h cm_failed_oci -c "service orcclient status | grep loaded -i; ls -l /etc/cron.d/enable_configuration” -y -f 200 -w 200 -p oci-custom_validation.log
+
+
+
+
+Hall : 9 width , 6.5 height 58.5
+side wall : 6.5 * 7 45.5              104
+
+kitchen :
+12.5 width * 3 = 37.5
+27 * 2  = 54
+11.5 * 7 = 80.5
+8.5 * 2 = 17                250 feet's  (150*950 + 100*750)
+4 * 2 * 3 = 24
+3 * 3 * 2 = 18
+3 * 3 * 2 = 18
+
+Bedroom :
+master bedroom :
+10 * 9  = 90               90
+
+children :
+10 * 9  = 90              90
+
+guest :
+5 * 7 = 35
+10.5 * 2 = 21             73
+5.5 * 3 = 16.5
+
+
+70000 hydraulic
+60000 Normal
+
+
+doit -1 -e /usr/bin/ssh -h ocilist -c "export no_proxy=us.oracle.com;curl -k -s -o /tmp/details.sh https://pds-chef-infrastructure.us.oracle.com/dis_chef_repo/Chef_file/uptake.sh;chmod +x /tmp/details.sh;/tmp/details.sh oci-custom" -y -f 200 -w 1200 -p oci.log
+
+
+doit -1 -e /usr/bin/ssh -h failed_but_not_disk_full -c "service orcclient status | grep loaded -i; ls -l /etc/cron.d/enable_configuration" -y -f 200 -w 200 -p oci_second_validation.log
+
+
+
+doit -1 -e /usr/bin/ssh -h oci_failedlist -c "df -hTP | grep -w '/' | awk '{print $(NF-1)}'" -y -f 200 -w 200 -p disk_full.log
+
+
+
+doit -1 -e /usr/bin/ssh -h list -c "unset http_proxy HTTPS_PROXY https_proxy HTTP_PROXY;curl -k -s -o /tmp/details.sh https://pds-chef-infrastructure.us.oracle.com/dis_chef_repo/Chef_file/uptake.sh;chmod +x /tmp/details.sh;/tmp/details.sh oci-custom" -y -f 100 -w 1200 -p oci_second.log
+
+
+
+Designed end to end image build pipeline for OCI and on-premise both windows and linux which reduced almost 90% of touch and cycle time of implementation
+
+Ramulu
+Sesharao
+
+
+Shivaji
+
+Pre-auth working command : 
+
+oci os preauth-request create --namespace 'peo' --bucket-name 'bucket-cust_images' --name 'pre-auth-req1' --access-type 'ObjectReadWrite' --time-expires '2022-09-15T20:30' --object-name 'ee-ol8u5-qi'
+
+
+
+
+Import working commands :
+
+
+oci compute image import from-object-uri --compartment-id ocid1.compartment.oc1..aaaaaaaajvstndw4euzjmv6zgxz2hylmlrcgkyiqojhckmdenvepvqoacs3q --uri 'https://objectstorage.us-phoenix-1.oraclecloud.com/p/Ojdu-0UTiUb5QA_iqttzEtf9oL-f33e1bFLbGa-fQzShIQ1MfyfERCwcnNgDghcV/n/peo/b/bucket-cust_images/o/peo-ol8u4-qi-2022-08-08' --display-name 'my-imported-image'  - worked within Peo tenancy from ENTSS to PDSImages 
+
+
+oci compute image import from-object-uri --compartment-id ocid1.compartment.oc1..aaaaaaaafvce5onqaw5pf2sbjq322m46sitnnb7dupukoupqjqvqveailsxq --uri 'https://objectstorage.us-phoenix-1.oraclecloud.com/p/Ojdu-0UTiUb5QA_iqttzEtf9oL-f33e1bFLbGa-fQzShIQ1MfyfERCwcnNgDghcV/n/peo/b/bucket-cust_images/o/peo-ol8u4-qi-2022-08-08' --display-name 'my-imported-image' --config-file config-peocorp  - worked from Peo URL to peocorp prod OIT-Services--BDS-Images compartment 
+
+
+
+region=us-phoenix-1
+
+
+
+6u4 and 6u6 - give source -image type  and  --source-image-type   --launch-mode
+
+
+-bash-4.4# pwd
+/scratch/saikrishna
+-bash-4.4# hostname
+den00bod
+
+ansible-playbook -i inv -e host=ocicustom orcl_uptake.yml -k -K
+
+
+1647 oci machines are working 
+
+
+
+Issue : 
+
+Farm OL7U7 chef overlay failed. 
+
+Issue they were seeing in while running the cloud init script on ol7u7 : 
+
+
+Upgrade 1 Package
+
+Total download size: 52 k
+Downloading packages:
+Delta RPMs disabled because /usr/bin/applydeltarpm not installed.
+Running transaction check
+ERROR with transaction check vs depsolve:
+iptables = 1.4.21-35.0.1.el7 is needed by iptables-services-1.4.21-35.0.1.el7.x86_64
+You could try running: rpm -Va --nofiles --nodigest
+Your transaction was saved, rerun it with:
+yum load-transaction /tmp/yum_save_tx.2022-08-04.02-22.yRdkJl.yumtx
+
+We have made changes to cookbook and it worked..
+
+Later the issue was at the pamd.conf file missing for which we have made changes to the cookbook called password_stamdaradzation.
+
+ And we have moved the code to bds config and it resolved after pushing the changes to prod tar.
+
+
+=====================================================================================================================================================
+
+For the P2 which we got in the morning , basically we dont support that
+10:42
+its operation issue , for Image and configuration queue if its PEOCORPPROD tenancy and supported by us then only we support and accept P1/P2
+
+for that I was asking for hostname to confirm if its really P2 or not and do we support or not
+
+
+[root@imagerunner gitlab-runner]# rm -rf /home/gitlab-runner/builds/RzvMNbyg/0/pe-oci-infra/oit-image-management-system/prerequisites/scripts/oci_oit_logging_sdk/__pycache__/
+[root@imagerunner gitlab-runner]# ls -lthra /home/gitlab-runner/builds/RzvMNbyg/0/pe-oci-infra/oit-image-management-system/prerequisites/scripts/oci_oit_logging_sdk
+
+rm -rf /home/gitlab-runner/builds/RzvMNbyg/0/pe-oci-infra/oit-image-management-system/ImageBuild/OKVM/windows/oci_oit_logging_sdk/__pycache__/
+
+
+
+Third phase of pipeline :
+
+1) Creates pre-auth URL from the objects in object storage - Peo/phx region
+2) checks if the image already exist. If exist, rename it with image_name_old and import the fresh image - peocorpprod/iAd/phx/uk
+3) if the image_name_old is also exist, delete it and import the fresh image - peocorpprod/iAd/phx/uk
+4) if nothing is exist, it will directly import the image - peocorpprod/iAd/phx/uk
+
+
+
+Our patch cycle is 30 days and new vulnerabilities get introduced daily basis. so we cant keep up-to 0 considering that our patch release and uptake is monthly and we expect at any point of time, we will still have 0-50 days that can be detected. anything beyond that , we will look into it.
+
+we are not in a daily patch mode to get it close to zero.
+
+This 0-50 days gap is applicable for OS and 0-90/100 days vulnerabilities are expected for application and databases as those patch release cycles are quarterly.
+
+250740
+
+8074600115
+
+9966772908
+
+
+5eam-leSs123
+
+
+
+
+
+rm -rf ee-bds-config 
+(base) sairatho@sairatho-mac ~ % git clone https://orahub.oci.oraclecorp.com/pe-oci-infra/ee-bds-config.git -b development 
+
+
+
+
+myaccess.oracle-ocna.com  - ocna VPN URL
+Creds : 
+saikrishna.rathod
+<password>+YK
+
+
+
+
+
+
+
+command 'sh /tmp/common1/noarch/emagent/software/install_emagent_farmcc_13c.sh'
+
+
+First attempted 100
+Passed - 66
+Failed - 34
+
+Second attempted - 545
+Passed - 499
+
+
+Third attempt: 545
+Passed : 454
+
+454
+499
+66
+=======
+1019
+
+Total: 1234
+Excluded solaris - 78
+
+Actual attempted - 1156
+Passed - 1019
+Failed - 111
+Not pngable/unresolvable - 26
+
+8543 9749 2160 - Mahesh Adhar
+
+
+rpm -qa | grep -i clamav
+rpm -qa | grep -i orc
+sh +x /tmp/new_clam.sh
+
+
+50100412807486
+RATHOD SAIKRISHNA
+HDFC0001621
+
+
+
+1049 - unresolvable or not singable 
+
